@@ -1,3 +1,6 @@
+import multiprocessing
+multiprocessing.set_start_method('spawn', True)
+
 import torch, torchvision
 import torch.nn as nn
 import torch.nn.functional as F

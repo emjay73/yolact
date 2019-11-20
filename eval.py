@@ -332,10 +332,7 @@ class Detections:
 
         with open(os.path.join(args.web_det_path, '%s.json' % cfg.name), 'w') as f:
             json.dump(output, f)
-        
-
-        
-
+   
 def mask_iou(mask1, mask2, iscrowd=False):
     """
     Inputs inputs are matricies of size _ x N. Output is size _1 x _2.
@@ -611,8 +608,10 @@ def evalvideo(net:Yolact, path:str):
         print('Could not open video "%s"' % path)
         exit(-1)
     
-    net = CustomDataParallel(net).cuda()
-    transform = torch.nn.DataParallel(FastBaseTransform()).cuda()
+    net = CustomDataParallel(net)
+    net = net.cuda()
+    transform = torch.nn.DataParallel(FastBaseTransform())
+    transform = transform.cuda()
     frame_times = MovingAverage(100)
     fps = 0
     # The 0.8 is to account for the overhead of time.sleep

@@ -8,6 +8,9 @@
 # Written by Ross Girshick
 # --------------------------------------------------------
 
+import multiprocessing
+multiprocessing.set_start_method('spawn', True)
+
 cimport cython
 import numpy as np
 cimport numpy as np

@@ -118,7 +118,7 @@ class SavePath:
 
         if file_name.endswith('interrupt'):
             params = params[:-1]
-        
+        print("params: ", params)
         model_name = '_'.join(params[:-2])
         epoch = params[-2]
         iteration = params[-1]

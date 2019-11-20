@@ -1,3 +1,6 @@
+import multiprocessing
+multiprocessing.set_start_method('spawn', True)
+
 import torch
 import torch.nn.functional as F
 from ..box_utils import decode, jaccard, index2d
